@@ -41,12 +41,12 @@ The build system is called "cmake" and is defined in the file `projectname.subli
 ```json
 {
     "name": "cmake",
-    "shell_cmd": "cd ${project_path}/build && cmake .. && make",
+    "shell_cmd": "cd ${project_path}/build && cmake .. && make -j4",
     "file_regex": "/([^/:]+):(\\d+):(\\d+): "
 }
 ```
 
-Information about how to extend the build system can be found here https://www.sublimetext.com/docs/3/build_systems.html
+Information about how to extend the build system can be found here https://www.sublimetext.com/docs/3/build_systems.html. Note: the `make -j4` command allows make to use 4 parallel jobs.
 
 ## Test
 Open the `projectname.sublime-project` file by typing

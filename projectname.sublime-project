@@ -3,7 +3,7 @@
     [
     	{
     		"name": "cmake",
-    		"shell_cmd": "cd ${project_path}/build && cmake .. && make",
+    		"shell_cmd": "cd ${project_path}/build && cmake .. && make -j4",
     		"file_regex": "/([^/:]+):(\\d+):(\\d+): "
     	}
     ],
