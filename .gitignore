@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Sublime Text
+*.sublime-workspace
+
+# CMake build directory content
+build/*
