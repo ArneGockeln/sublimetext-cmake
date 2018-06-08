@@ -36,13 +36,19 @@ I used the following ST3 plugins to setup ST3 as C++ IDE and make all work.
 - EasyClangComplete https://packagecontrol.io/packages/EasyClangComplete
 
 ## ST3 Build System
-The build system is called "cmake" and is defined in the file `projectname.sublime-project`. That means it is only available inside this project. 
+The build system is called "cmake build" and is defined in the file `projectname.sublime-project`. That means it is only available inside this project. Also there is a variant, which "cleans" up the build directory by removing and re-creating it. This variant can be activated by the hotkey: `cmd+shift+b`. After the clean you need to switch the build system again by pressing `cmd+shift+b` and select "cmake build". Now if you press `cmd+b` the cmake and make command will be executed. 
 
 ```json
 {
-    "name": "cmake",
+    "name": "cmake build",
     "shell_cmd": "cd ${project_path}/build && cmake .. && make -j4",
-    "file_regex": "/([^/:]+):(\\d+):(\\d+): "
+    "file_regex": "/([^/:]+):(\\d+):(\\d+): ",
+    "variants": [
+        {
+            "name": "clean",
+            "shell_cmd": "rm -rf ${project_path}/build && mkdir ${project_path}/build"
+        }
+    ]
 }
 ```
 
@@ -55,7 +61,7 @@ Open the `projectname.sublime-project` file by typing
 $ subl projectname.sublime-project
 ```
 
-Hit `CMD+B`. The console opens and shows build information:
+Hit `CMD+B`. The console opens and shows build information: *(If nothing happens, you need to activate the default build system by pressing `CMD+SHIFT+B` and select "cmake build".)*
 
 ```
 -- Configuring done
@@ -73,3 +79,7 @@ Run binary `projectname` in build/.
 ```bash
 ./build/projectname
 ```
+
+To `clean` the build directory hit `CMD+SHIFT+B` and select "cmake build - clean". Hit `CMD+SHIFT+B` again and switch back to "cmake build". 
+
+With the `ESC` key you can close the build console window.
