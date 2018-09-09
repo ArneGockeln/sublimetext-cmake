@@ -3,7 +3,7 @@
     [
     	{
     		"name": "cmake build",
-    		"shell_cmd": "cd ${project_path}/build && cmake .. && make -j4",
+    		"shell_cmd": "if [ ! -d ${project_path}/build ]; then mkdir ${project_path}/build; fi && cd ${project_path}/build && cmake .. && make -j4",
     		"file_regex": "/([^/:]+):(\\d+):(\\d+): ",
     		"variants": [
     			{
